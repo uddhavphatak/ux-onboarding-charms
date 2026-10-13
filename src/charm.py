@@ -55,8 +55,8 @@ class HttpbinDemoCharm(ops.CharmBase):
 
     def __init__(self, framework: ops.Framework):
         super().__init__(framework)
-        framework.observe(self.on.collect_unit_status, self._on_httpbin_pebble_ready)
-        framework.observe(self.on[CONTAINER_NAME].pebble_ready, self._on_collect_status)
+	framework.observe(self.on.collect_unit_status, self._on_collect_status)
+        framework.observe(self.on[CONTAINER_NAME].pebble_ready, self._on_httpbin_pebble_ready)
         framework.observe(self.on.config_changed, self._on_config_changed)
         self.container = self.unit.get_container(CONTAINER_NAME)
 
